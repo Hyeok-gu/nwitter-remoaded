@@ -11,6 +11,7 @@ import {
   Title,
   Wrapper,
 } from "../components/auth-components";
+import GithubButton from "../components/github-btn";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -76,6 +77,11 @@ export default function Login() {
       <Switcher>
         계정이 없나요? <Link to="/create-account">Create one &rarr;</Link>
       </Switcher>
+      <Switcher>
+        비밀번호를 잊어버리셨어요?
+        <Link to="/forget-password"> Find Password &rarr;</Link>
+      </Switcher>
+      <GithubButton />
     </Wrapper>
   );
 }
