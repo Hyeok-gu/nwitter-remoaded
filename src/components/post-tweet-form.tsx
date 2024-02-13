@@ -119,7 +119,7 @@ export default function PostTweetForm() {
         value={tweet}
       />
       <AttachFileButton htmlFor="file">
-        {file ? "Photo added ✅" : "Add Photo"}
+        {file ? `${file.name} ✅` : "Add Photo"}
       </AttachFileButton>
       <AttachFileInput
         onChange={onFileChange}
