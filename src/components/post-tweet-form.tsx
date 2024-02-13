@@ -65,13 +65,12 @@ export default function PostTweetForm() {
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
-    const maxSize = 1 * 1024 * 1024; //* 1MB 사이즈 제한
+    const maxSize = 3 * 1024 * 1024; //* 3MB 사이즈 제한
     if (files && files.length === 1) {
       setFile(files[0]);
       const fileSize = files[0].size;
-      console.log(fileSize);
       if (fileSize > maxSize) {
-        alert("1MB 이상의 파일은 업로드할 수 없습니다.");
+        alert("3MB 이상의 파일은 업로드할 수 없습니다.");
         setFile(null);
         return;
       }
@@ -99,8 +98,8 @@ export default function PostTweetForm() {
         const result = await uploadBytes(locationRef, file); // promise를 반환하는데, 그 결과값에 업로드 결과에 대한 참조가 있다.
         const url = await getDownloadURL(result.ref); // 업로드가 완료된 파일의 퍼블릭 경로를 string으로 가져온다.
         await updateDoc(doc, { photo: url }); //참조할 값을 먼저 넣고 추가할 값을 넣는다. 이미 참조할 doc이 위에 있으므로 간단.
+        setFile(null);
       }
-      setFile(null);
       setTweet("");
     } catch (e) {
       console.log(e);
