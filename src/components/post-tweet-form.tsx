@@ -91,10 +91,7 @@ export default function PostTweetForm() {
         userId: user.uid,
       });
       if (file) {
-        const locationRef = ref(
-          storage,
-          `tweets/${user.uid}-${user.displayName}/${doc.id}`
-        );
+        const locationRef = ref(storage, `tweets/${user.uid}/${doc.id}`);
         const result = await uploadBytes(locationRef, file); // promise를 반환하는데, 그 결과값에 업로드 결과에 대한 참조가 있다.
         const url = await getDownloadURL(result.ref); // 업로드가 완료된 파일의 퍼블릭 경로를 string으로 가져온다.
         await updateDoc(doc, { photo: url }); //참조할 값을 먼저 넣고 추가할 값을 넣는다. 이미 참조할 doc이 위에 있으므로 간단.

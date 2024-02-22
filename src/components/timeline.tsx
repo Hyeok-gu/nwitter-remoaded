@@ -13,7 +13,9 @@ export interface ITweet {
   createdAt: number;
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  overflow-y: scroll;
+`;
 
 export default function Timeline() {
   const [tweets, setTweet] = useState<ITweet[]>([]);
